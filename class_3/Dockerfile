@@ -30,7 +30,7 @@ ENV MYCAT_USER mycat
 ENV MYCAT_PWD mycat
 RUN /usr/bin/python /opt/setuser.py
 RUN easy_install supervisor
-MKDIR /etc/supervisor
+RUN mkdir /etc/supervisor
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 8080
