@@ -20,6 +20,7 @@ RUN chown -R mysql:mysql /var/lib/mysql/mysql
 RUN wget http://apache.mirrors.spacedump.net/tomcat/tomcat-7/v7.0.67/bin/apache-tomcat-7.0.67.zip && \
     unzip apache-tomcat-7.0.67.zip && \
     rm -f apache-tomcat-7.0.67.zip
+RUN chmod +x /opt/apache-tomcat-7.0.67/bin/catalina.sh
 RUN wget https://github.com/MyCATApache/Mycat-download/raw/master/1.4-RELEASE/Mycat-server-1.4-release-20151019230038-linux.tar.gz && \
     tar -xzvf Mycat-server-1.4-release-20151019230038-linux.tar.gz && \
     rm -f Mycat-server-1.4-release-20151019230038-linux.tar.gz
