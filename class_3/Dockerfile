@@ -32,7 +32,9 @@ RUN /usr/bin/python /opt/setuser.py
 RUN easy_install supervisor
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
-EXPOSE 8080, 8066, 9066
+EXPOSE 8080
+EXPOSE 8066
+EXPOSE 9066
 
 ENTRYPOINT ["supervisord -c /etc/supervisor/supervisord.conf -n"]
 CMD [""]
