@@ -31,11 +31,12 @@ ENV MYCAT_PWD mycat
 RUN /usr/bin/python /opt/setuser.py
 RUN easy_install supervisor
 RUN mkdir /etc/supervisor
+RUN mkdir /var/log/supervisor
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 8080
 EXPOSE 8066
 EXPOSE 9066
 
-ENTRYPOINT ["supervisord -c /etc/supervisor/supervisord.conf -n"]
-CMD [""]
+ENTRYPOINT ["supervisord"]
+CMD ["-c", "/etc/supervisor/supervisord.conf", "-n"]
