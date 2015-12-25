@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import os
-import xml.etree.ElementTree as ET
+import lxml import etree
 
 
 def setuser():
@@ -11,12 +11,16 @@ def setuser():
         return
 
     config = '/opt/mycat/conf/server.xml'
-    tree = ET.parse(config)
-    root = tree.getroot()
-    user = root.find('user[@name="user"]')
+    tree = etree.parse(config)
+    user = tree.find('user[@name="user"]')
     user.attrib['name'] = mycat_user
     user.find('property[@name="password"]').text = mycat_pwd
-    tree.write(config)
+    with open(config, 'w') as f:
+        f.write(etree.tostring(
+            tree,
+            xml_declaration=True,
+            encoding='UTF-8',
+            doctype='<!DOCTYPE mycat:server SYSTEM "server.dtd">'))
 
 
 if __name__ == '__main__':
