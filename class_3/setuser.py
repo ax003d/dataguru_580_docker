@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import os
-import lxml import etree
+from lxml import etree
 
 
 def setuser():
