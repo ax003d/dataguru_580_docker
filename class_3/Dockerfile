@@ -24,6 +24,8 @@ RUN wget https://github.com/MyCATApache/Mycat-download/raw/master/1.4-RELEASE/My
     tar -xzvf Mycat-server-1.4-release-20151019230038-linux.tar.gz && \
     rm -f Mycat-server-1.4-release-20151019230038-linux.tar.gz
 ADD schema.xml /opt/mycat/conf/schema.xml
+ADD setuser.py /opt/
+RUN /usr/bin/python /opt/setuser.py
 RUN easy_install supervisor
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
