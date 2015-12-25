@@ -24,6 +24,7 @@ RUN wget https://github.com/MyCATApache/Mycat-download/raw/master/1.4-RELEASE/My
     tar -xzvf Mycat-server-1.4-release-20151019230038-linux.tar.gz && \
     rm -f Mycat-server-1.4-release-20151019230038-linux.tar.gz
 ADD schema.xml /opt/mycat/conf/schema.xml
+ADD wrapper.conf /opt/mycat/conf/wrapper.conf
 ADD setuser.py /opt/
 ENV MYCAT_USER mycat
 ENV MYCAT_PWD mycat
