@@ -8,15 +8,15 @@ RUN yum update -y && \
                 wget \
                 unzip \
                 python-setuptools
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.65-3.b17.el7.x86_64
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.65-3.b17.el7.x86_64/jre
 WORKDIR /opt
 RUN wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm && \
     rpm -ivh mysql-community-release-el7-5.noarch.rpm && \
+    rm -f mysql-community-release-el7-5.noarch.rpm && \
     yum update -y && \
     yum install -y mysql-server && \
     yum clean all
-RUN mysql_install_db
-RUN chown -R mysql:mysql /var/lib/mysql/mysql
+RUN mysql_install_db --user=mysql
 RUN wget http://apache.mirrors.spacedump.net/tomcat/tomcat-7/v7.0.67/bin/apache-tomcat-7.0.67.zip && \
     unzip apache-tomcat-7.0.67.zip && \
     rm -f apache-tomcat-7.0.67.zip
